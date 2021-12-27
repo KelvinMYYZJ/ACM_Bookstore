@@ -52,9 +52,15 @@ void FileMap<KeyType, ValueType, ValueIndexType, HashFunc, IndexCompare,
               << " size : " << now_node.size
               << " is leaf , value :" << std::endl;
     for (int i = 0; i < now_node.size; i++) {
-      std::cout << tmptab << "index[" << i << "] = (" << now_node.index[i].first
-                << ", " << now_node.index[i].second
-                << ") , value = " << GetValue(now_node.ctx[i]) << std::endl;
+      if (now_node.ctx[i])
+        std::cout << tmptab << "index[" << i << "] = ("
+                  << now_node.index[i].first << ", " << now_node.index[i].second
+                  << ") , value = " << GetValue(now_node.ctx[i]) << std::endl;
+      else
+        std::cout << tmptab << "index[" << i << "] = ("
+                  << now_node.index[i].first << ", " << now_node.index[i].second
+                  << ") , value = "
+                  << "NONE" << std::endl;
     }
     return;
   }
@@ -228,7 +234,7 @@ void FileMap<KeyType, ValueType, ValueIndexType, HashFunc, IndexCompare,
     while (true) {
       for (; pos < now_node.size; pos++) {
         if (KeyCompare()(now_node.index[pos].first, key)) return;
-        ans.push_back(GetValue(now_node.ctx[pos]));
+        if (now_node.ctx[pos]) ans.push_back(GetValue(now_node.ctx[pos]));
       }
       if (!now_node.nxt) return;
       now_node.self = now_node.nxt;
@@ -244,4 +250,44 @@ void FileMap<KeyType, ValueType, ValueIndexType, HashFunc, IndexCompare,
   DFSFind(key, nxt_node, ans);
   return;
 }
+template <class KeyType, class ValueType, class ValueIndexType, class HashFunc,
+          class IndexCompare, class KeyCompare, class IndexLess>
+void FileMap<KeyType, ValueType, ValueIndexType, HashFunc, IndexCompare,
+             KeyCompare, IndexLess>::Erase(const KeyType& key,
+                                           const ValueType& value) {
+  IndexType tmp_index = std::make_pair(key, HashFunc()(value));
+  if (!root) return;
+  Node root_node(root);
+  LoadNode(root_node);
+  DFSErase(tmp_index, root_node);
+}
+template <class KeyType, class ValueType, class ValueIndexType, class HashFunc,
+          class IndexCompare, class KeyCompare, class IndexLess>
+void FileMap<KeyType, ValueType, ValueIndexType, HashFunc, IndexCompare,
+             KeyCompare, IndexLess>::DFSErase(const IndexType& tmp_index,
+                                              Node& now_node) {
+  if (now_node.is_leaf) {
+    int pos = now_node.LowerBound(tmp_index);
+    typedef Comp::LessToComp<IndexLess, IndexType> IndexRealComp;
+    while (true) {
+      for (; pos < now_node.size; pos++) {
+        if (IndexRealComp()(now_node.index[pos], tmp_index)) return;
+        now_node.ctx[pos].Clear();
+        UpdateNode(now_node);
+      }
+      if (!now_node.nxt) return;
+      now_node.self = now_node.nxt;
+      LoadNode(now_node);
+      pos = 0;
+    }
+    throw("Unkown Error");
+    return;
+  }
+  int pos = std::max(now_node.LowerBound(tmp_index) - 1, 0);
+  Node nxt_node(now_node.children[pos]);
+  LoadNode(nxt_node);
+  DFSErase(tmp_index, nxt_node);
+  return;
+}
+
 #endif  // BOOKSTORE_SRC_BPTREE_INL

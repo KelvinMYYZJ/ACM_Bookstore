@@ -38,6 +38,7 @@ class FileMap {
   void DFSInsert(const IndexType& tmp_index, const FilePtr<ValueType>& value,
                  Node& now_node);
   void DFSFind(const KeyType& key, Node& now_node, vector<ValueType>&);
+  void DFSErase(const IndexType& tmp_index,Node& now_node);
   // void Split(const FilePtr<Node>&);
   FileMemPool node_file;
   FileMemPool ctx_file;

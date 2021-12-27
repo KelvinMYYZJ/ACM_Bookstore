@@ -13,6 +13,7 @@ class FilePtr {
   FilePtr();
   FilePtr(long);
   FilePtr(const FilePtr<ValueType>&);
+	void Clear();
   long Get_Pos() const;
   operator bool()const;
 	bool operator!()const;	

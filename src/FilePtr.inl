@@ -9,6 +9,13 @@ FilePtr<ValueType>::FilePtr(long _pos) : pos(_pos){};
 
 template <class ValueType>
 FilePtr<ValueType>::FilePtr(const FilePtr<ValueType>& other) : pos(other.pos){};
+
+template <class ValueType>
+void FilePtr<ValueType>::Clear()
+{
+	pos = -1;
+}
+
 template <class ValueType>
 long FilePtr<ValueType>::Get_Pos() const {
   return pos;

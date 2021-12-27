@@ -3,7 +3,8 @@ project(Bookstore)
 
 set(CMAKE_CXX_STANDARD 20)
 add_compile_options(-std=c++2a -g)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/runtime)
+#set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/runtime)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
 include_directories(
         ${PROJECT_SOURCE_DIR}/src/
         ${PROJECT_SOURCE_DIR}/bin/
@@ -21,7 +22,7 @@ set(running_dir
 				${PROJECT_SOURCE_DIR}/running
 )
 #add_executable(code ${src_dir})
-add_executable(test ${test_dir} ${lib_dir} )
+add_executable(code ${test_dir} ${lib_dir} )
 
 # 添加链接库
 #target_link_libraries(code ${PROJECT_SOURCE_DIR}/bin/libUll.a)
