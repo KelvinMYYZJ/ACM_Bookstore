@@ -19,6 +19,11 @@ class CompToLess {
 	public:
   bool operator()(const ValueType& lhs, const ValueType& rhs);
 };
+template <class Compare, class ValueType>
+class LessToComp {
+	public:
+  bool operator()(const ValueType& lhs, const ValueType& rhs);
+};
 template<class ValueType>
 
 class GetSelf {
