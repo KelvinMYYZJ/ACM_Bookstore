@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 add_compile_options(-std=c++2a -g)
 #set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/runtime)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
+add_definitions(-DONLINE_JUDGE)
 include_directories(
         ${PROJECT_SOURCE_DIR}/src/
         ${PROJECT_SOURCE_DIR}/bin/
