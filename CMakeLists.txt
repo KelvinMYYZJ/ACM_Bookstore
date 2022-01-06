@@ -13,14 +13,16 @@ else()
 endif()
 include_directories(
         ${PROJECT_SOURCE_DIR}/src/
+        ${PROJECT_SOURCE_DIR}/src/FileSystem/
+        ${PROJECT_SOURCE_DIR}/src/FileSystem/
         ${PROJECT_SOURCE_DIR}/bin/
 )
+set(lib_dir
+        ${PROJECT_SOURCE_DIR}/src/FileSystem/MyString.cpp
+				)
 set(src_dir
         ${PROJECT_SOURCE_DIR}/src/main.cpp
         )
-set(lib_dir
-        ${PROJECT_SOURCE_DIR}/src/MyString.cpp
-				)
 set(test_dir
         ${PROJECT_SOURCE_DIR}/src/test/test.cpp
 )
