@@ -1,5 +1,5 @@
-#ifndef BOOKSTORE_SRC_FILEPTR_INL
-#define BOOKSTORE_SRC_FILEPTR_INL
+#ifndef BOOKSTORE_SRC_FILESYSTEM_FILEPTR_INL
+#define BOOKSTORE_SRC_FILESYSTEM_FILEPTR_INL
 #include "FilePtr.h"
 template <class ValueType>
 FilePtr<ValueType>::FilePtr() : pos(-1){};
@@ -43,4 +43,4 @@ template <class ValueType>
 FilePtr<ValueType> operator+(const FilePtr<ValueType>& lhs, const int& rhs) {
   return FilePtr<ValueType>(lhs.pos + rhs * sizeof(ValueType));
 }
-#endif  // BOOKSTORE_SRC_FILEPTR_INL
+#endif  // BOOKSTORE_SRC_FILESYSTEM_FILEPTR_INL

@@ -1,5 +1,5 @@
-#ifndef BOOKSTORE_SRC_MYSTRING_H
-#define BOOKSTORE_SRC_MYSTRING_H
+#ifndef BOOKSTORE_SRC_FILESYSTEM_MYSTRING_H
+#define BOOKSTORE_SRC_FILESYSTEM_MYSTRING_H
 #include <cstring>
 #include <string>
 #include "DefaultConst.hpp"
@@ -29,4 +29,4 @@ class MyString {
 	char& operator[](int index);
 	char operator[](int index)const;
 };
-#endif  // BOOKSTORE_SRC_MYSTRING_H
+#endif  // BOOKSTORE_SRC_FILESYSTEM_MYSTRING_H

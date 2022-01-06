@@ -1,5 +1,5 @@
-#ifndef BOOKSTORE_SRC_MYSTRING_CPP
-#define BOOKSTORE_SRC_MYSTRING_CPP
+#ifndef BOOKSTORE_SRC_FILESYSTEM_MYSTRING_CPP
+#define BOOKSTORE_SRC_FILESYSTEM_MYSTRING_CPP
 #include "MyString.h"
 #include <cstring>
 #include <string>
@@ -48,4 +48,4 @@ MyString operator+(const MyString& lhs, const MyString& rhs) {
 }
 char& MyString::operator[](int index) { return str[index]; }
 char MyString::operator[](int index) const { return str[index]; }
-#endif  // BOOKSTORE_SRC_MYSTRING_CPP
+#endif  // BOOKSTORE_SRC_FILESYSTEM_MYSTRING_CPP

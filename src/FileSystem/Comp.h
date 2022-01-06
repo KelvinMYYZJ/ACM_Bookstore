@@ -1,5 +1,5 @@
-#ifndef BOOKSTORE_SRC_COMP_H
-#define BOOKSTORE_SRC_COMP_H
+#ifndef BOOKSTORE_SRC_FILESYSTEM_COMP_H
+#define BOOKSTORE_SRC_FILESYSTEM_COMP_H
 #include <utility>
 using std::pair;
 namespace Comp {
@@ -32,4 +32,4 @@ class GetSelf {
 };
 }  // namespace Comp
 #include "Comp.inl"
-#endif  // BOOKSTORE_SRC_COMP_H
+#endif  // BOOKSTORE_SRC_FILESYSTEM_COMP_H

@@ -1,5 +1,5 @@
-#ifndef BOOKSTORE_SRC_FILEMEMPOOL_H
-#define BOOKSTORE_SRC_FILEMEMPOOL_H
+#ifndef BOOKSTORE_SRC_FILESYSTEM_FILEMEMPOOL_H
+#define BOOKSTORE_SRC_FILESYSTEM_FILEMEMPOOL_H
 #include <fstream>
 #include <string>
 #include "MyString.h"
@@ -29,4 +29,4 @@ class FileMemPool {
   ~FileMemPool();
 };
 #include "FileMemPool.inl"
-#endif  // BOOKSTORE_SRC_FILEMEMPOOL_H
+#endif  // BOOKSTORE_SRC_FILESYSTEM_FILEMEMPOOL_H

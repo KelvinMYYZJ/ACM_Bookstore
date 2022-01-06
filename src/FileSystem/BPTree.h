@@ -1,5 +1,5 @@
-#ifndef BOOKSTORE_SRC_BPTREE_H
-#define BOOKSTORE_SRC_BPTREE_H
+#ifndef BOOKSTORE_SRC_FILESYSTEM_BPTREE_H
+#define BOOKSTORE_SRC_FILESYSTEM_BPTREE_H
 #include <functional> 
 #include <string>
 #include <utility>
@@ -94,4 +94,4 @@ class FileMap<KeyType, ValueType, ValueIndexType, HashFunc, IndexCompare,
 };
 #include "BPTree.inl"
 #include "BPTree_Node.inl"
-#endif  // BOOKSTORE_SRC_BPTREE_H
+#endif  // BOOKSTORE_SRC_FILESYSTEM_BPTREE_H

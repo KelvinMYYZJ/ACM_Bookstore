@@ -1,5 +1,5 @@
-#ifndef BOOKSTORE_SRC_FILEMEMPOOL_INL
-#define BOOKSTORE_SRC_FILEMEMPOOL_INL
+#ifndef BOOKSTORE_SRC_FILESYSTEM_FILEMEMPOOL_INL
+#define BOOKSTORE_SRC_FILESYSTEM_FILEMEMPOOL_INL
 #include <fstream>
 #include <string>
 #include "MyString.h"
@@ -70,4 +70,4 @@ bool FileMemPool::Empty() const{
 }
 FileMemPool::~FileMemPool() = default;
 
-#endif  // BOOKSTORE_SRC_FILEMEMPOOL_INL
+#endif  // BOOKSTORE_SRC_FILESYSTEM_FILEMEMPOOL_INL

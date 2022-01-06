@@ -1,5 +1,5 @@
-#ifndef BOOKSTORE_SRC_BPTREE_NODE_INL
-#define BOOKSTORE_SRC_BPTREE_NODE_INL
+#ifndef BOOKSTORE_SRC_FILESYSTEM_BPTREE_NODE_INL
+#define BOOKSTORE_SRC_FILESYSTEM_BPTREE_NODE_INL
 #include "BPTree.h"
 #pragma region Done
 template <class KeyType, class ValueType, class ValueIndexType, class HashFunc,
@@ -149,4 +149,4 @@ void FileMap<KeyType, ValueType, ValueIndexType, HashFunc, IndexCompare,
   return;
 }
 #pragma endregion
-#endif  // BOOKSTORE_SRC_BPTREE_NODE_INL
+#endif  // BOOKSTORE_SRC_FILESYSTEM_BPTREE_NODE_INL

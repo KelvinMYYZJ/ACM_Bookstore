@@ -1,5 +1,5 @@
-#ifndef BOOKSTORE_SRC_FILEPTR_H
-#define BOOKSTORE_SRC_FILEPTR_H
+#ifndef BOOKSTORE_SRC_FILESYSTEM_FILEPTR_H
+#define BOOKSTORE_SRC_FILESYSTEM_FILEPTR_H
 template <class ValueType>
 class FilePtr;
 template <class ValueType>
@@ -24,4 +24,4 @@ class FilePtr {
       <ValueType>(const FilePtr<ValueType>&, const int&);
 };
 #include "FilePtr.inl"
-#endif  // BOOKSTORE_SRC_FILEPTR_H
+#endif  // BOOKSTORE_SRC_FILESYSTEM_FILEPTR_H

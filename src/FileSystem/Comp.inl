@@ -1,5 +1,5 @@
-#ifndef BOOKSTORE_SRC_COMP_INL
-#define BOOKSTORE_SRC_COMP_INL
+#ifndef BOOKSTORE_SRC_FILESYSTEM_COMP_INL
+#define BOOKSTORE_SRC_FILESYSTEM_COMP_INL
 #include <utility>
 
 #include "Comp.h"
@@ -34,4 +34,4 @@ template <class ValueType>
 ValueType Comp::GetSelf<ValueType>::operator()(const ValueType& obj) {
   return obj;
 }
-#endif  // BOOKSTORE_SRC_COMP_INL
+#endif  // BOOKSTORE_SRC_FILESYSTEM_COMP_INL
