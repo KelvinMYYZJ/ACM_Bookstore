@@ -6,7 +6,8 @@
 #include <vector>
 
 // #include "Array.h"
-#include "DefaultConst.cpp"
+#include "DefaultConst.hpp"
+extern const int max_node_size;
 #include "FileMemPool.h"
 using std::pair;
 using std::string;

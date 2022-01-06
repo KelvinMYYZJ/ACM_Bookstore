@@ -2,10 +2,15 @@ cmake_minimum_required(VERSION 3.16)
 project(Bookstore)
 
 set(CMAKE_CXX_STANDARD 20)
-add_compile_options(-std=c++2a -g)
-#set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/runtime)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
-add_definitions(-DONLINE_JUDGE)
+set(ONLINEJUDGE 1)
+if (ONLINEJUDGE)
+	set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
+	add_compile_options(-std=c++2a -o2)
+	add_definitions(-DONLINE_JUDGE)
+else()
+	set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/runtime)
+	add_compile_options(-std=c++2a -g)
+endif()
 include_directories(
         ${PROJECT_SOURCE_DIR}/src/
         ${PROJECT_SOURCE_DIR}/bin/

@@ -2,9 +2,10 @@
 #define BOOKSTORE_SRC_MYSTRING_H
 #include <cstring>
 #include <string>
-#include "DefaultConst.cpp"
+#include "DefaultConst.hpp"
+extern const int string_size;
 using std::string;
-class MyString;
+// class MyString;   
 class MyString {
  private:
   char str[string_size];
