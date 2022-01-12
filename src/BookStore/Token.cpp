@@ -163,6 +163,8 @@ Priority::Priority() : MyString() {}
 Priority::Priority(const string& other) : MyString(other) {
   if (Length() > 1) throw(Error(string("Priority too long : ") + ToString()));
   int first_illegal_pos = FindIllegal(other, CharsetType::cDigit);
+  if (other.front() != 1 && other.front() != 3 && other.front() != 7)
+    throw(Error("Invalid priority"));
   if (first_illegal_pos < Length())
     throw(Error(string("Invaild charactor in Priority, postion : ") +
                 std::to_string(first_illegal_pos)));
@@ -267,14 +269,13 @@ KeywordList::~KeywordList() = default;
 Keyword::Keyword() : MyString() {}
 
 Keyword::Keyword(const string& other) : MyString(other) {
-  if (Length() > 60)
-    throw(Error(string("Keyword too long : ") + ToString()));
+  if (Length() > 60) throw(Error(string("Keyword too long : ") + ToString()));
   int first_illegal_pos = FindIllegal(other, CharsetType::cPrintable);
   if (first_illegal_pos < Length())
     throw(Error(string("Invaild charactor in Keyword, postion : ") +
                 std::to_string(first_illegal_pos)));
-	if (other.find_first_of('|') != string::npos)
-		throw("Multiple keywords in keyword");
+  if (other.find_first_of('|') != string::npos)
+    throw("Multiple keywords in keyword");
 }
 
 Keyword::~Keyword() = default;
