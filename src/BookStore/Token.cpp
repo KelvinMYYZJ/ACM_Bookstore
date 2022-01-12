@@ -163,7 +163,7 @@ Priority::Priority() : MyString() {}
 Priority::Priority(const string& other) : MyString(other) {
   if (Length() > 1) throw(Error(string("Priority too long : ") + ToString()));
   int first_illegal_pos = FindIllegal(other, CharsetType::cDigit);
-  if (other.front() != 1 && other.front() != 3 && other.front() != 7)
+  if (other.front() != '1' && other.front() != '3' && other.front() != '7')
     throw(Error("Invalid priority"));
   if (first_illegal_pos < Length())
     throw(Error(string("Invaild charactor in Priority, postion : ") +
