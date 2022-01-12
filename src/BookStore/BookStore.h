@@ -28,7 +28,7 @@ class BookStore {
   void Delete(TokenScanner& left_line);
   void Show(TokenScanner& left_line);
   void Buy(TokenScanner& left_line);
-  void Sselect(TokenScanner& left_line);
+  void Select(TokenScanner& left_line);
   void Modify(TokenScanner& left_line);
   void Import(TokenScanner& left_line);
 

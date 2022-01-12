@@ -15,7 +15,7 @@ void (BookStore::*BookStore::func_list[])(TokenScanner&) = {
     &BookStore::QuitCheck, &BookStore::Su,     &BookStore::Logout,
     &BookStore::Register,  &BookStore::Passwd, &BookStore::Useradd,
     &BookStore::Delete,    &BookStore::Show,   &BookStore::Buy,
-    &BookStore::Sselect,   &BookStore::Modify, &BookStore::Import,
+    &BookStore::Select,    &BookStore::Modify, &BookStore::Import,
 
 };
 const int BookStore::priority_need[] = {
@@ -131,6 +131,8 @@ void BookStore::Show(TokenScanner& left_line) {
       left_line.JudgeToken() == TokenScanner::tValue) {
     string tmp = left_line.GetNextToken();
     if (tmp != "finance") throw(Error("show what?"));
+    if (!(account_manager_.GetPriority() & 4))
+      throw(Error("you cant show finance"));
     pair<double, double> result;
     if (left_line.HasMoreToken()) {
       Quantity number = left_line.GetNextToken();
@@ -184,10 +186,16 @@ void BookStore::Show(TokenScanner& left_line) {
     }
     throw(Error("unkown index type : "s + tmp_token_pair.first));
   }
-  if (keyword == Keyword())
-    tmp_show_list = book_manager_.FindBook();
-  else
+  if (keyword != Keyword())
     tmp_show_list = book_manager_.FindBook(keyword);
+  else if (isbn != ""s)
+    tmp_show_list = book_manager_.FindBook(isbn);
+  else if (book_name != ""s)
+    tmp_show_list = book_manager_.FindBook(book_name);
+  else if (author != ""s)
+    tmp_show_list = book_manager_.FindBook(author);
+  else
+    tmp_show_list = book_manager_.FindBook();
   set<Book> show_list;
   for (const auto& tmp_book : tmp_show_list) {
     if (isbn != ""s && tmp_book.isbn != isbn) continue;
@@ -210,14 +218,14 @@ void BookStore::Buy(TokenScanner& left_line) {
   ISBN isbn = left_line.GetNextToken();
   Quantity quantity = left_line.GetNextToken();
   CheckTokenEmpty(left_line);
-	double income = book_manager_.BuyBook(isbn, quantity);
+  double income = book_manager_.BuyBook(isbn, quantity);
   cout << setiosflags(std::ios::fixed);
   cout << std::setprecision(2) << income << endl;
-	log_system_.Record(income);
+  log_system_.Record(income);
   return;
 }
 
-void BookStore::Sselect(TokenScanner& left_line) {
+void BookStore::Select(TokenScanner& left_line) {
   ISBN isbn = left_line.GetNextToken();
   CheckTokenEmpty(left_line);
   account_manager_.SelectBook(book_manager_.SelectBook(isbn));
@@ -281,7 +289,7 @@ void BookStore::Import(TokenScanner& left_line) {
   MoneyQuantity cost = left_line.GetNextToken();
   CheckTokenEmpty(left_line);
   book_manager_.Import(account_manager_.GetSelected(), quantity);
-	log_system_.Record(-cost.ToDouble());
+  log_system_.Record(-cost.ToDouble());
   return;
 }
 
