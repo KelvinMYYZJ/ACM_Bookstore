@@ -12,8 +12,7 @@ class MyString {
 
  public:
   MyString();
-  MyString(const char* other);
-  MyString(string other);
+  MyString(const string& other);
   int Length()const;
 	MyString& operator=(const MyString& other);
 	friend bool operator<(const MyString& lhs,const MyString& rhs);

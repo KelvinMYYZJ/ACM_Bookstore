@@ -100,8 +100,6 @@ tokenscanner 解析$\rightarrow$ account/lib 完成指令 $\rightarrow$ log记�
   ```c++
   class account{
       private:
-      ifstream in;
-      ofstream out;
       char user_id[30],passward[30];
       char user_name[30];
       int priority;//0,1,3,7
@@ -126,8 +124,6 @@ tokenscanner 解析$\rightarrow$ account/lib 完成指令 $\rightarrow$ log记�
   ```c++
   class lib{
       private:
-      ifstream in;
-      ofstream out;
       char isbn[20];
       char book_name[60],author[60],keyword[60],quantity[10];
       double price,total_cost;

@@ -34,6 +34,11 @@ FilePtr<ValueType>& FilePtr<ValueType>::operator++() {
   return *this;
 }
 template <class ValueType>
+FilePtr<ValueType>& FilePtr<ValueType>::operator--() {
+  pos -= sizeof(ValueType);
+  return *this;
+}
+template <class ValueType>
 FilePtr<ValueType> FilePtr<ValueType>::operator++(int) {
   FilePtr<ValueType> ans(*this);
   pos += sizeof(ValueType);

@@ -18,6 +18,7 @@ class FilePtr {
   operator bool()const;
 	bool operator!()const;	
   FilePtr<ValueType>& operator++();
+  FilePtr<ValueType>& operator--();
   FilePtr<ValueType> operator++(int);
 
   friend FilePtr<ValueType> operator+

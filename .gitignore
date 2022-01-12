@@ -5,6 +5,7 @@ runtime/
 .clangd/
 .github/
 .cmake/
+src/test/test.cpp
 code
 CMakeFiles
 cmake_install.cmake

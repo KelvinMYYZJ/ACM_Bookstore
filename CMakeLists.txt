@@ -16,20 +16,26 @@ include_directories(
         ${PROJECT_SOURCE_DIR}/src/BookStore/
         ${PROJECT_SOURCE_DIR}/bin/
 )
-set(lib_dir
-        ${PROJECT_SOURCE_DIR}/src/FileSystem/MyString.cpp
-				)
+file(GLOB_RECURSE BookStore_SRCS "src/BookStore/*.cpp")
+file(GLOB_RECURSE FileSystem_SRCS "src/FileSystem/*.cpp")
+list(APPEND lib_dir ${BookStore_SRCS})
+#list(REMOVE_ITEM lib_dir ${PROJECT_SOURCE_DIR}/src/BookStore/BookStore.cpp)
+list(APPEND lib_dir ${FileSystem_SRCS})
+message("arg1 = ${lib_dir}")  
 set(src_dir
-        ${PROJECT_SOURCE_DIR}/src/main.cpp
+        ${PROJECT_SOURCE_DIR}/src/main_stdio.cpp
         )
+set(test_main_dir
+        ${PROJECT_SOURCE_DIR}/src/main.cpp
+)
 set(test_dir
         ${PROJECT_SOURCE_DIR}/src/test/test.cpp
+
+
 )
-set(running_dir
-				${PROJECT_SOURCE_DIR}/running
-)
-#add_executable(code ${src_dir})
-add_executable(code ${test_dir} ${lib_dir} )
+add_executable(code ${src_dir} ${lib_dir})
+add_executable(test ${test_main_dir} ${lib_dir} )
+add_executable(temp ${test_dir} ${lib_dir} )
 
 # 添加链接库
 #target_link_libraries(code ${PROJECT_SOURCE_DIR}/bin/libUll.a)

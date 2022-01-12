@@ -6,8 +6,7 @@
 #include <iostream>
 using std::string;
 MyString::MyString() { str[0] = '\0'; }
-MyString::MyString(const char* other) { strcpy(str, other); }
-MyString::MyString(string other) : MyString(other.c_str()) {}
+MyString::MyString(const string& other) { strcpy(str, other.c_str()); }
 int MyString::Length() const { return strlen(str); }
 string MyString::ToString() const { return str; }
 MyString& MyString::operator=(const MyString& other) {

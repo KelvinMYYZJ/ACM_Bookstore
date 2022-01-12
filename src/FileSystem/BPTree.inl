@@ -289,5 +289,24 @@ void FileMap<KeyType, ValueType, ValueIndexType, HashFunc, IndexCompare,
   DFSErase(tmp_index, nxt_node);
   return;
 }
-
+template <class KeyType, class ValueType, class ValueIndexType, class HashFunc,
+          class IndexCompare, class KeyCompare, class IndexLess>
+vector<ValueType> FileMap<KeyType, ValueType, ValueIndexType, HashFunc,
+                          IndexCompare, KeyCompare, IndexLess>::FindAll() {
+  vector<ValueType> ans;
+  if (!root) return ans;
+  Node now_node(root);
+  LoadNode(now_node);
+  while (!now_node.is_leaf) {
+    now_node.self = now_node.children[0];
+    LoadNode(now_node);
+  }
+  while (true) {
+    for (int pos = 0; pos < now_node.size; pos++)
+      if (now_node.ctx[pos]) ans.push_back(GetValue(now_node.ctx[pos]));
+    if (!now_node.nxt) return ans;
+    now_node.self = now_node.nxt;
+    LoadNode(now_node);
+  }
+}
 #endif  // BOOKSTORE_SRC_BPTREE_INL

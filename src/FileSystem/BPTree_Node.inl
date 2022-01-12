@@ -1,3 +1,4 @@
+#pragma once
 #ifndef BOOKSTORE_SRC_FILESYSTEM_BPTREE_NODE_INL
 #define BOOKSTORE_SRC_FILESYSTEM_BPTREE_NODE_INL
 #include "BPTree.h"
@@ -51,7 +52,6 @@ void FileMap<KeyType, ValueType, ValueIndexType, HashFunc, IndexCompare,
                                                      const FilePtr<ValueType>
                                                          &value,
                                                      int pos) {
-  ValueIndexType tmp_valueindex = HashFunc()(value);
   index[size] = tmp_index;
   ctx[size] = value;
   Move(pos, size);

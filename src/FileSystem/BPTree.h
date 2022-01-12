@@ -50,6 +50,7 @@ class FileMap {
   void Print();
   void Insert(const KeyType& key, const ValueType& value);
   std::vector<ValueType> Find(const KeyType& key);
+  std::vector<ValueType> FindAll();
   // ValueType Find(const KeyType& key, const ValueIndexType index);
   void Erase(const KeyType& key, const ValueType& value);
 };
