@@ -11,6 +11,7 @@ void TokenScanner::RemoveLeadingZero() {
   return;
 }
 TokenScanner::TokenScanner(const string& str) : buffer(str) {
+	if (buffer.size() > 1024)
 		throw (Error("line too long"));
   RemoveLeadingZero();
 }
