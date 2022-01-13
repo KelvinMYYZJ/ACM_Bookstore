@@ -39,9 +39,9 @@ BookStore::BookStore(const string& name)
 void BookStore::work() {
   try {
     while (true) {
-      TokenScanner tmp_token_scanner(std::cin);
-      if (!tmp_token_scanner.HasMoreToken()) continue;
       try {
+        TokenScanner tmp_token_scanner(std::cin);
+        if (!tmp_token_scanner.HasMoreToken()) continue;
         Operation::OpType op_type =
             Operation(tmp_token_scanner.GetNextToken()).GetType();
         if (op_type == Operation::oQuit) {
