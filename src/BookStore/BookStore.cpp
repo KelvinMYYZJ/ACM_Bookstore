@@ -52,6 +52,9 @@ void BookStore::work() {
         (this->*func_list[op_type])(tmp_token_scanner);
         cerr << "Succeed!" << endl;
       } catch (Error& error) {
+        if (strcmp(error.what(), "Reached EOF"))
+          std::cerr << "Fatal Unexpected Error:" << error.what() << endl;
+        return;
         cout << "Invalid" << endl;
         cerr << error.what() << endl;
         continue;
